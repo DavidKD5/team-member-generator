@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
@@ -10,22 +9,22 @@ var team = [];
 const managerQuestions = [
   {
     type: "input",
-    name: "nameManager",
+    name: "name",
     message: "What is manager's name?",
   },
   {
     type: "input",
-    name: "idManager",
+    name: "id",
     message: "What is manager's ID?",
   },
   {
     type: "input",
-    name: "emailManager",
+    name: "email",
     message: "What is manager's email?",
   },
   {
     type: "input",
-    name: "numberManager",
+    name: "other",
     message: "What is manager's office number?",
   },
 
@@ -42,22 +41,22 @@ function addEngineer() {
     .prompt([
       {
         type: "input",
-        name: "nameEngineer",
+        name: "name",
         message: "What is engineer's name?",
       },
       {
         type: "input",
-        name: "idEngineer",
+        name: "id",
         message: "What is engineer's ID?",
       },
       {
         type: "input",
-        name: "emailEngineer",
+        name: "email",
         message: "What is engineer's email?",
       },
       {
         type: "input",
-        name: "githubEngineer",
+        name: "other",
         message: "What is engineer's github?",
       },
 
@@ -70,12 +69,7 @@ function addEngineer() {
     ])
     .then((response) => {
       team.push(
-        new Engineer(
-          response.nameEngineer,
-          response.idEngineer,
-          response.emailEngineer,
-          response.githubEngineer
-        )
+        new Engineer(response.name, response.id, response.email, response.other)
       );
       if (response.addMember === "Engineer") {
         addEngineer();
@@ -94,22 +88,22 @@ function addIntern() {
     .prompt([
       {
         type: "input",
-        name: "nameIntern",
+        name: "name",
         message: "What is intern's name?",
       },
       {
         type: "input",
-        name: "idIntern",
+        name: "id",
         message: "What is intern's ID?",
       },
       {
         type: "input",
-        name: "emailIntern",
+        name: "email",
         message: "What is intern's email?",
       },
       {
         type: "input",
-        name: "schoolIntern",
+        name: "other",
         message: "What school does intern attend?",
       },
 
@@ -122,12 +116,7 @@ function addIntern() {
     ])
     .then((response) => {
       team.push(
-        new Intern(
-          response.nameIntern,
-          response.idIntern,
-          response.emailIntern,
-          response.schoolIntern
-        )
+        new Intern(response.name, response.id, response.email, response.other)
       );
       if (response.addMember === "Engineer") {
         addEngineer();
@@ -150,19 +139,14 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer.prompt(managerQuestions).then((response) => {
     team.push(
-      new Manager(
-        response.nameManager,
-        response.idManager,
-        response.emailManager,
-        response.numberManager
-      )
+      new Manager(response.name, response.id, response.email, response.other)
     );
+    console.log(team);
     if (response.addMember === "Engineer") {
       addEngineer();
     } else if (response.addMember === "Intern") {
       addIntern();
     } else {
-      console.log(team);
       var htmlData = generateHTML(team);
       writeToFile("./index.html", htmlData);
     }
