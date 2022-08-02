@@ -1,22 +1,24 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "poppins";
 }
-.title {
-  text-align: center;
-}
+
 .team {
   display: flex;
   justify-content: center;
+  max-width: 900px;
 }
 .memberContainer {
-  border: 1px solid black;
   text-align: center;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  min-width: 10%;
-  background-color: #ff574a;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: #ffa600;
+  min-width: 50%;
+  color: black;
+  position: relative;
+  padding-bottom: 3%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
 .background {
@@ -25,4 +27,34 @@
   background-image: url(../Assets/images/background_image.jpg);
   background-size: cover;
   background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  font-size: 100px;
+}
+
+p {
+  margin: 10px;
+  font-size: 20px;
+}
+
+h2 {
+  padding-top: 5%;
+  font-size: 35px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 25px;
+  padding-bottom: 3%;
+}
+
+span {
+  font-weight: bold;
 }

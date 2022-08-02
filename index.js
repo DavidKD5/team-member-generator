@@ -24,7 +24,7 @@ const managerQuestions = [
   },
   {
     type: "input",
-    name: "other",
+    name: "officeNumber",
     message: "What is manager's office number?",
   },
 
@@ -56,7 +56,7 @@ function addEngineer() {
       },
       {
         type: "input",
-        name: "other",
+        name: "github",
         message: "What is engineer's github?",
       },
 
@@ -69,7 +69,12 @@ function addEngineer() {
     ])
     .then((response) => {
       team.push(
-        new Engineer(response.name, response.id, response.email, response.other)
+        new Engineer(
+          response.name,
+          response.id,
+          response.email,
+          response.github
+        )
       );
       if (response.addMember === "Engineer") {
         addEngineer();
@@ -103,7 +108,7 @@ function addIntern() {
       },
       {
         type: "input",
-        name: "other",
+        name: "school",
         message: "What school does intern attend?",
       },
 
@@ -116,7 +121,7 @@ function addIntern() {
     ])
     .then((response) => {
       team.push(
-        new Intern(response.name, response.id, response.email, response.other)
+        new Intern(response.name, response.id, response.email, response.school)
       );
       if (response.addMember === "Engineer") {
         addEngineer();
@@ -139,7 +144,12 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer.prompt(managerQuestions).then((response) => {
     team.push(
-      new Manager(response.name, response.id, response.email, response.other)
+      new Manager(
+        response.name,
+        response.id,
+        response.email,
+        response.officeNumber
+      )
     );
     console.log(team);
     if (response.addMember === "Engineer") {
