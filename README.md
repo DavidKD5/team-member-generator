@@ -2,6 +2,8 @@
   
   ## Description
 
+https://user-images.githubusercontent.com/94725701/182280192-2fe94ace-47ef-4457-a8a6-f28ae18870ed.mp4
+
   This is a basic team profile generator created with node. The application generates a team member after a user answers a series of questions.  After all team members are added, an html page is created where the user can view the the team. Links are applied to the member's email addresses and github profiles.
 
   ![](assets/images/img1.png)
